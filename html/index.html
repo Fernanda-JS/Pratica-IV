@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Plataforma de uma organização não governamental para divulgação de projetos e captação de voluntários.">
+    <title>Conecta ONG</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="container cabecalho-conteudo">
+            <a href="#/" class="logo" aria-label="Conecta ONG - Página inicial">Conecta ONG</a>
+
+            <nav aria-label="Navegação principal">
+                <ul class="menu">
+                    <li><a href="#/" data-rota="/">Início</a></li>
+                    <li><a href="#/sobre" data-rota="/sobre">Sobre</a></li>
+
+                    <li class="menu-dropdown">
+                        <a href="#/projetos" data-rota="/projetos" aria-haspopup="true">Projetos</a>
+
+                        <ul class="submenu">
+                            <li><a href="#/projetos/educacao">Educação</a></li>
+                            <li><a href="#/projetos/ambiente">Meio ambiente</a></li>
+                            <li><a href="#/projetos/comunidade">Comunidade</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#/contato" data-rota="/contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- O JavaScript renderiza aqui o template da página atual -->
+    <main id="app" tabindex="-1">
+        <noscript>
+            <p class="container">Esta página precisa de JavaScript para funcionar.</p>
+        </noscript>
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <p>© 2026 Conecta ONG. Todos os direitos reservados.</p>
+            <p>Projeto acadêmico desenvolvido com HTML5, CSS3 e JavaScript.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="/js/main.js"></script>
+</body>
+
+</html>
