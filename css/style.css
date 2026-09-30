@@ -1,0 +1,709 @@
+:root {
+    --cor-primaria: #0066a1;
+    --cor-primaria-escura: #004d78;
+    --cor-primaria-clara: #e6f4fb;
+    --cor-branco: #ffffff;
+    --cor-fundo: #f4f7f9;
+    --cor-cinza-claro: #e5e7eb;
+    --cor-cinza: #6b7280;
+    --cor-texto: #1f2937;
+    --cor-texto-claro: #ffffff;
+    --cor-destaque: #f4b400;
+    --cor-sucesso: #2e7d32;
+    --cor-sucesso-clara: #e8f5e9;
+    --cor-erro: #c62828;
+    --cor-erro-clara: #fdecea;
+
+    --fonte-xs: 0.75rem;
+    --fonte-sm: 0.875rem;
+    --fonte-md: 1rem;
+    --fonte-lg: 1.5rem;
+    --fonte-xl: 2.5rem;
+
+    --espaco-1: 0.25rem;
+    --espaco-2: 0.5rem;
+    --espaco-3: 1rem;
+    --espaco-4: 1.5rem;
+    --espaco-5: 2rem;
+    --espaco-6: 3rem;
+    --espaco-7: 4rem;
+
+    --raio: 8px;
+    --largura-maxima: 1200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: var(--fonte-md);
+    line-height: 1.6;
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
+}
+
+.container {
+    width: min(90%, var(--largura-maxima));
+    margin: 0 auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+p {
+    margin-bottom: var(--espaco-3);
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: var(--fonte-xl);
+    margin-bottom: var(--espaco-4);
+}
+
+h2 {
+    font-size: var(--fonte-lg);
+    margin-bottom: var(--espaco-3);
+}
+
+h3 {
+    font-size: var(--fonte-md);
+    margin-bottom: var(--espaco-2);
+}
+
+.cabecalho {
+    background-color: var(--cor-branco);
+    border-bottom: 1px solid var(--cor-cinza-claro);
+}
+
+.cabecalho-conteudo {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-4);
+}
+
+.logo {
+    color: var(--cor-primaria);
+    font-size: var(--fonte-lg);
+    font-weight: bold;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-4);
+}
+
+.menu a {
+    font-size: var(--fonte-sm);
+    color: var(--cor-texto);
+    transition: color 0.2s;
+}
+
+.menu a:hover,
+.menu a:focus {
+    color: var(--cor-primaria);
+}
+
+/* Dropdown "Projetos": abre com :hover (mouse) e :focus-within (teclado/Tab) */
+.menu-dropdown {
+    position: relative;
+}
+
+/* Todos os links do primeiro nível têm o mesmo padding vertical, para alinhar
+   o menu e evitar espaço vazio entre "Projetos" e o submenu. */
+.menu > li > a {
+    display: inline-block;
+    padding: var(--espaco-3) 0;
+}
+
+.submenu {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    padding: var(--espaco-2);
+    background-color: var(--cor-branco);
+    border: 1px solid var(--cor-cinza-claro);
+    border-radius: var(--raio);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    z-index: 10;
+}
+
+.submenu a {
+    display: block;
+    padding: var(--espaco-2) var(--espaco-3);
+    border-radius: var(--raio);
+}
+
+.submenu a:hover,
+.submenu a:focus {
+    background-color: var(--cor-primaria-clara);
+}
+
+.menu-dropdown:hover .submenu,
+.menu-dropdown:focus-within .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.hero {
+    background-color: var(--cor-primaria-clara);
+    padding: var(--espaco-7) 0;
+}
+
+.hero-conteudo {
+    display: flex;
+    align-items: center;
+    min-height: 420px;
+}
+
+.hero-texto {
+    max-width: 700px;
+}
+
+.hero h1 {
+    color: var(--cor-primaria-escura);
+    font-size: var(--fonte-xl);
+}
+
+.hero p {
+    max-width: 650px;
+    font-size: var(--fonte-md);
+    color: var(--cor-texto);
+}
+
+.tag {
+    display: inline-block;
+    margin-bottom: var(--espaco-3);
+    padding: var(--espaco-1) var(--espaco-2);
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto);
+    border-radius: var(--raio);
+    font-size: var(--fonte-xs);
+    font-weight: bold;
+}
+
+.hero-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-3);
+    margin-top: var(--espaco-4);
+}
+
+.botao {
+    display: inline-block;
+    padding: var(--espaco-2) var(--espaco-4);
+    border-radius: var(--raio);
+    font-size: var(--fonte-sm);
+    font-weight: bold;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.botao-principal {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+}
+
+.botao-principal:hover,
+.botao-principal:focus {
+    background-color: var(--cor-primaria-escura);
+}
+
+.botao-secundario {
+    background-color: transparent;
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+}
+
+.botao-secundario:hover,
+.botao-secundario:focus {
+    background-color: var(--cor-primaria-clara);
+}
+
+.botao-claro {
+    background-color: var(--cor-branco);
+    color: var(--cor-primaria-escura);
+}
+
+.botao-claro:hover,
+.botao-claro:focus {
+    background-color: var(--cor-primaria-clara);
+}
+
+.secao {
+    padding: var(--espaco-7) 0;
+}
+
+.secao-destaque {
+    background-color: var(--cor-branco);
+}
+
+.titulo-secao {
+    max-width: 700px;
+    margin-bottom: var(--espaco-6);
+}
+
+.titulo-secao p {
+    color: var(--cor-cinza);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espaco-4);
+}
+
+.card {
+    background-color: var(--cor-branco);
+    padding: var(--espaco-5);
+    border: 1px solid var(--cor-cinza-claro);
+    border-radius: var(--raio);
+}
+
+.icone {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--espaco-3);
+    background-color: var(--cor-primaria-clara);
+    color: var(--cor-primaria);
+    border-radius: 50%;
+    font-size: var(--fonte-lg);
+}
+
+.projetos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espaco-4);
+}
+
+.projeto {
+    overflow: hidden;
+    background-color: var(--cor-branco);
+    border: 1px solid var(--cor-cinza-claro);
+    border-radius: var(--raio);
+}
+
+.projeto-imagem {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--fonte-lg);
+    font-weight: bold;
+}
+
+.projeto-social {
+    background-color: var(--cor-primaria-clara);
+    color: var(--cor-primaria-escura);
+}
+
+.projeto-ambiente {
+    background-color: #e8f5e9;
+    color: var(--cor-sucesso);
+}
+
+.projeto-comunidade {
+    background-color: #fff3e0;
+    color: #9a5b00;
+}
+
+.projeto-conteudo {
+    padding: var(--espaco-4);
+}
+
+.link {
+    color: var(--cor-primaria);
+    font-size: var(--fonte-sm);
+    font-weight: bold;
+}
+
+.link:hover,
+.link:focus {
+    color: var(--cor-primaria-escura);
+    text-decoration: underline;
+}
+
+.cta {
+    padding: var(--espaco-6) 0;
+    /* background-color: var(--cor-primaria); */
+    background-image: url("/imagens/solidariedade.jpg");
+    background-size: cover;
+    background-position: center;
+    color: var(--cor-branco);
+}
+
+.cta-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espaco-5);
+}
+
+.cta h2 {
+    font-size: var(--fonte-lg);
+}
+
+.cta p {
+    max-width: 650px;
+}
+
+.tag-clara {
+    background-color: var(--cor-branco);
+    color: var(--cor-primaria);
+}
+
+.contato {
+    max-width: 800px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-4);
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-2);
+}
+
+.campo label {
+    font-size: var(--fonte-sm);
+    font-weight: bold;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    padding: var(--espaco-3);
+    border: 1px solid var(--cor-cinza-claro);
+    border-radius: var(--raio);
+    background-color: var(--cor-branco);
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: var(--fonte-md);
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: 3px solid var(--cor-primaria-clara);
+    border-color: var(--cor-primaria);
+}
+
+/* Estados do formulário (controlados pelo JavaScript via data-estado).
+   O mesmo padrão vale para todos os campos: erro = vermelho, sucesso = verde. */
+.campo-mensagem {
+    min-height: 1.4em;
+    font-size: var(--fonte-sm);
+    font-weight: bold;
+}
+
+.campo[data-estado="erro"] input,
+.campo[data-estado="erro"] textarea {
+    border-color: var(--cor-erro);
+    background-color: var(--cor-erro-clara);
+}
+
+.campo[data-estado="erro"] input:focus,
+.campo[data-estado="erro"] textarea:focus {
+    outline-color: var(--cor-erro-clara);
+}
+
+.campo[data-estado="erro"] .campo-mensagem {
+    color: var(--cor-erro);
+}
+
+.campo[data-estado="sucesso"] input,
+.campo[data-estado="sucesso"] textarea {
+    border-color: var(--cor-sucesso);
+    background-color: var(--cor-sucesso-clara);
+}
+
+.campo[data-estado="sucesso"] input:focus,
+.campo[data-estado="sucesso"] textarea:focus {
+    outline-color: var(--cor-sucesso-clara);
+}
+
+.campo[data-estado="sucesso"] .campo-mensagem {
+    color: var(--cor-sucesso);
+}
+
+/* Aviso exibido após o envio do formulário */
+.aviso-sucesso {
+    padding: var(--espaco-3);
+    background-color: var(--cor-sucesso-clara);
+    border: 1px solid var(--cor-sucesso);
+    border-radius: var(--raio);
+    color: var(--cor-sucesso);
+    font-weight: bold;
+}
+
+.aviso-sucesso[hidden] {
+    display: none;
+}
+
+/* Item do menu da página atual e foco do conteúdo principal (SPA) */
+.menu a[aria-current="page"] {
+    color: var(--cor-primaria);
+    font-weight: bold;
+}
+
+main:focus {
+    outline: none;
+}
+
+.rodape {
+    padding: var(--espaco-5) 0;
+    background-color: var(--cor-texto);
+    color: var(--cor-branco);
+    font-size: var(--fonte-sm);
+}
+
+.rodape p {
+    margin-bottom: var(--espaco-2);
+}
+
+/* ==========================================================
+   ESTRATÉGIA RESPONSIVA (mobile-first por faixas de largura)
+   ----------------------------------------------------------
+   Faixa            | Grids (.cards/.projetos) | Menu / cabeçalho
+   até 480px        | 1 coluna                 | empilhado, submenu oculto
+   481px a 600px    | 1 coluna                 | empilhado, links quebram linha, submenu oculto
+   601px a 768px    | 2 colunas                | em linha, gap menor
+   769px a 1024px   | 2 colunas                | em linha, container 90%
+   1025px a 1440px  | 3 colunas                | em linha, container até 1200px
+   acima de 1441px  | 3 colunas                | em linha, container até 1400px
+   ========================================================== */
+
+/* ---- Até 480px (celulares pequenos) ----
+   - Cabeçalho: logo e menu empilhados na vertical (coluna) e centralizados.
+   - Menu: itens em coluna; o dropdown é ocultado (o link "Projetos" já leva à seção).
+   - Hero: padding vertical reduzido (2rem); título cai para 1.5rem.
+   - Botões do hero: empilham e ocupam 100% da largura.
+   - Grids de cards e projetos: 1 coluna.
+   - Faixa CTA: texto e botão empilhados, alinhados à esquerda. */
+@media (max-width: 480px) {
+
+    .cabecalho-conteudo {
+        flex-direction: column;
+        padding: var(--espaco-3) 0;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--espaco-2);
+    }
+
+    .submenu {
+        display: none;
+    }
+
+    .hero {
+        padding: var(--espaco-5) 0;
+    }
+
+    h1,
+    .hero h1 {
+        font-size: var(--fonte-lg);
+    }
+
+    .hero-botoes {
+        flex-direction: column;
+    }
+
+    .botao {
+        width: 100%;
+        text-align: center;
+    }
+
+    .cards,
+    .projetos {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-conteudo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ---- 481px a 600px (celulares grandes) ----
+   - Cabeçalho: empilhado (coluna) com espaçamento de 1rem.
+   - Menu: continua em linha, mas quebra para a linha seguinte se faltar espaço, centralizado.
+   - Dropdown oculto.
+   - Hero: padding vertical de 3rem; título de 2rem.
+   - Grids: 1 coluna.
+   - Faixa CTA: empilhada, alinhada à esquerda. */
+@media (min-width: 481px) and (max-width: 600px) {
+    .cabecalho-conteudo {
+        flex-direction: column;
+        gap: var(--espaco-3);
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .submenu {
+        display: none;
+    }
+
+    .hero {
+        padding: var(--espaco-6) 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .cards,
+    .projetos {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-conteudo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ---- 601px a 768px (tablets em retrato) ----
+   - Cabeçalho: volta para linha (logo à esquerda, menu à direita).
+   - Menu: espaçamento entre itens reduzido para 1rem; dropdown ativo (hover/focus-within).
+   - Hero: padding vertical de 3rem; título de 2.5rem.
+   - Grids: 2 colunas (o 3º card/projeto vai para a segunda linha).
+   - Faixa CTA: texto e botão empilhados. */
+@media (min-width: 601px) and (max-width: 768px) {
+
+    .menu {
+        gap: var(--espaco-3);
+    }
+
+    .hero {
+        padding: var(--espaco-6) 0;
+    }
+
+    .hero h1 {
+        font-size: var(--fonte-xl);
+    }
+
+    .cards,
+    .projetos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-conteudo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ---- 769px a 1024px (tablets em paisagem / notebooks pequenos) ----
+   - Container: largura de 90% da tela.
+   - Hero: padding vertical de 4rem.
+   - Grids: 2 colunas.
+   - Faixa CTA: texto e botão lado a lado, com gap reduzido (1.5rem). */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .container {
+        width: 90%;
+    }
+
+    .hero {
+        padding: var(--espaco-7) 0;
+    }
+
+    .cards,
+    .projetos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-conteudo {
+        gap: var(--espaco-4);
+    }
+}
+
+/* ---- 1025px a 1440px (desktops) ----
+   - Container: 90% da tela, limitado a 1200px.
+   - Hero: altura mínima de 400px; título de 2.5rem.
+   - Grids: 3 colunas. */
+@media (min-width: 1025px) and (max-width: 1440px) {
+
+    .container {
+        width: 90%;
+        max-width: 1200px;
+    }
+
+    .hero-conteudo {
+        min-height: 400px;
+    }
+
+    .cards,
+    .projetos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero h1 {
+        font-size: var(--fonte-xl);
+    }
+}
+
+/* ---- Acima de 1441px (telas grandes) ----
+   - Container: passa a ter até 1400px (a largura é redefinida, pois
+     "width: min(90%, 1200px)" limitaria o container a 1200px).
+   - Hero: padding vertical de 5rem, altura mínima de 500px e título de 3rem.
+   - Grids: 3 colunas. */
+@media (min-width: 1441px) {
+
+    .container {
+        width: min(90%, 1400px);
+    }
+
+    .hero {
+        padding: 5rem 0;
+    }
+
+    .hero-conteudo {
+        min-height: 500px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .cards,
+    .projetos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
