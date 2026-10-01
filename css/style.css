@@ -353,8 +353,7 @@ h3 {
 
 .cta {
     padding: var(--espaco-6) 0;
-    /* background-color: var(--cor-primaria); */
-    background-image: url("/imagens/solidariedade.jpg");
+    background-image: url("../imagens/solidariedade.jpg");
     background-size: cover;
     background-position: center;
     color: var(--cor-branco);
