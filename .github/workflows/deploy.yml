@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Define a pasta onde estão os ficheiros estáticos (raiz do projeto)
-          path: '.'
+          path: 'html'
 
       - name: Deploy no GitHub Pages
         id: deployment
