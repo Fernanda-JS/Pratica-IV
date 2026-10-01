@@ -1,0 +1,45 @@
+name: Deploy estático no GitHub Pages
+
+on:
+  # Executa o workflow automaticamente a cada push na branch principal (main)
+  push:
+    branches:
+      - main
+      - master
+
+  # Permite executar manualmente a partir do tab Actions no GitHub
+  workflow_dispatch:
+
+# Define as permissões necessárias para o GITHUB_TOKEN publicar no GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permite apenas um deploy concorrente
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload dos artefatos da aplicação
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Define a pasta onde estão os ficheiros estáticos (raiz do projeto)
+          path: '.'
+
+      - name: Deploy no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
